@@ -8,8 +8,8 @@ import io.reactivex.schedulers.Schedulers
  * Created by Gustavo Terras.
  */
 
-object ConsumerService {
-    fun <T> getEvents(): Observable<T> {
+class ConsumerService<T> {
+    fun getEvents(): Observable<T> {
         return IConsumerService.create().events<T>()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
