@@ -4,7 +4,6 @@ import br.com.gustavoterras.foo.lib.core.util.Constants
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,7 +16,7 @@ import retrofit2.http.GET
 interface IConsumerService {
 
     @GET("events")
-    fun events(): Observable<List<JSONObject>>
+    fun <T> events(): Observable<T>
 
     companion object Factory {
         fun create(): IConsumerService {
