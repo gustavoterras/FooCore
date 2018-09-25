@@ -10,7 +10,7 @@ import org.json.JSONArray
  */
 
 object ConsumerService {
-    fun getEvents(): Observable<JSONArray> {
+    fun getEvents(): Observable<Any> {
         return IConsumerService.create().events()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

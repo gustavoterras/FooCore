@@ -7,7 +7,6 @@ import br.com.gustavoterras.foo.lib.core.network.ConsumerService
 import br.com.gustavoterras.fooCore.R
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
-import org.json.JSONArray
 
 class CoreActivity : AppCompatActivity() {
 
@@ -15,7 +14,11 @@ class CoreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_core)
 
-        ConsumerService.getEvents().subscribe(object : Observer<JSONArray> {
+        ConsumerService.getEvents().subscribe(object : Observer<Any> {
+            override fun onNext(t: Any) {
+                Log.e("TAG", t.toString())
+            }
+
             override fun onComplete() {
 
             }
@@ -26,10 +29,6 @@ class CoreActivity : AppCompatActivity() {
 
             override fun onError(e: Throwable) {
 
-            }
-
-            override fun onNext(t: JSONArray) {
-                Log.e("TAG", t.toString())
             }
         })
     }
