@@ -16,7 +16,7 @@ import retrofit2.http.GET
 interface IConsumerService {
 
     @GET("events")
-    fun events(): Observable<Any>
+    fun events(): Observable<List<Any>>
 
     companion object Factory {
         fun create(): IConsumerService {
